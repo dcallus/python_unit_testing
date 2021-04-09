@@ -27,3 +27,7 @@ class RoomTest(unittest.TestCase):
     def test_room_add_guest_to_list(self):
         self.room_1.check_in_guest(self.guest_3)
         self.assertEqual(self.room_1.guest_list, [self.guest_1, self.guest_2, self.guest_3])
+
+    def test_room_remove_guest_from_list(self):
+        self.room_1.remove_guest(self.guest_1)
+        self.assertEqual(self.room_1.guest_list, [self.guest_2])
