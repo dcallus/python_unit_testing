@@ -13,6 +13,7 @@ class RoomTest(unittest.TestCase):
 
         # additional songs
         self.song_3 = Song("Common People", "Pulp")
+        self.song_4 = Song("The Wizard", "Black Sabbath")
 
         # default guests for room_1
         self.guest_1 = Guest("Bob", self.song_1, self.song_1)
@@ -27,13 +28,14 @@ class RoomTest(unittest.TestCase):
         self.guest_8 = Guest("Mike", self.song_3, self.song_3)
         self.guest_9 = Guest("Janice", self.song_2, self.song_2)
         self.guest_10 = Guest("Clive", self.song_1, self.song_1)
-        self.guest_11 = Guest("Skint Dave", self.song_1, self.song_3, wallet=1)
+        self.guest_11 = Guest("Skint Dave", self.song_1, self.song_4, wallet=1)
 
 
         # default lists for room_1
         self.song_list = [self.song_1, self.song_2]
         self.room_1_guests = [self.guest_1, self.guest_2]
         self.room_1 = Room(self.room_1_guests, self.song_list)
+        self.room_2 = Room(self.room_1_guests, [self.song_3, self.song_4])
     
     def test_room_has_guest_list(self):
         self.assertEqual(self.room_1.guest_list, self.room_1_guests)
@@ -102,6 +104,13 @@ class RoomTest(unittest.TestCase):
         self.room_1.check_in_guest(self.guest_11)
         self.assertEqual(self.room_1.guest_list, [self.guest_1, self.guest_2])
 
+    def test_room_has_guests_favourite_song__not_available(self):
+        has_song = self.room_1.room_has_guests_favourite_song(self.guest_11)
+        self.assertEqual(False, has_song)
+
+    def test_room_has_guests_favourite_song_available(self):
+        has_song = self.room_2.room_has_guests_favourite_song(self.guest_11)
+        self.assertEqual(True, has_song)
     
 
     
