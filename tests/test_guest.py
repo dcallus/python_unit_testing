@@ -14,3 +14,6 @@ class GuestTest(unittest.TestCase):
 
     def test_guest_name(self):
         self.assertEqual("June", self.guest_1.name)
+    
+    def test_guest_song(self):
+        self.assertEqual(self.song_1, self.guest_1.song)
