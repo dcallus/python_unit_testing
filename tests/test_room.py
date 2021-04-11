@@ -16,10 +16,10 @@ class RoomTest(unittest.TestCase):
 
         # default guests for room_1
         self.guest_1 = Guest("Bob", self.song_1)
-        self.guest_2 = Guest("Rob", self.song_2)
+        self.guest_2 = Guest("Rob", self.song_2, wallet=5)
 
         # additional guests for room_1
-        self.guest_3 = Guest("Ben", self.song_2)
+        self.guest_3 = Guest("Ben", self.song_2, wallet=4)
         self.guest_4 = Guest("George", self.song_1)
         self.guest_5 = Guest("Amy", self.song_2)
         self.guest_6 = Guest("Hilda", self.song_3)
@@ -88,7 +88,13 @@ class RoomTest(unittest.TestCase):
     def test_check_entry_price(self):
         self.assertEqual(5, self.room_1.entry)
 
-    def test_customer_has_enough_money(self):
+    def test_customer_has_enough_money_enough(self):
         self.assertEqual(True, self.room_1.check_guest_has_enough_money(self.guest_1))
+
+    def test_customer_has_enough_money_equal(self):
+        self.assertEqual(True, self.room_1.check_guest_has_enough_money(self.guest_2))
+
+    def test_customer_has_enough_money_not_enough(self):
+        self.assertEqual(False, self.room_1.check_guest_has_enough_money(self.guest_3))
 
     
