@@ -147,3 +147,7 @@ class RoomTest(unittest.TestCase):
         self.room_1.apply_drink_refund(self.guest_1, self.drink_1) 
         self.assertEqual(10, self.guest_1.wallet)
         self.assertEqual(0, self.room_1.bar_till)
+
+    def test_guests_removed(self):
+        self.room_1.remove_all_guests_from_list()
+        self.assertEqual([], self.room_1.guest_list)

@@ -54,3 +54,7 @@ class Room:
     def apply_drink_refund(self, guest, drink):
         guest.put_money_in_wallet(drink.price)
         self.bar_till -= drink.price
+
+    def remove_all_guests_from_list(self):
+        # in case of emergency
+        self.guest_list = []
