@@ -85,3 +85,10 @@ class RoomTest(unittest.TestCase):
         self.assertEqual(self.room_1.guest_list, [self.guest_1, self.guest_2, self.guest_3, self.guest_4, self.guest_5, self.guest_6,
                                         self.guest_7, self.guest_8, self.guest_9])
         
+    def test_check_entry_price(self):
+        self.assertEqual(5, self.room_1.entry)
+
+    def test_customer_has_enough_money(self):
+        self.assertEqual(True, self.room_1.check_guest_has_enough_money(self.guest_1))
+
+    

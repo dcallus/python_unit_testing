@@ -1,8 +1,9 @@
 class Room:
-    def __init__(self, guest_list: list, song_list: list, max_guests=9):
+    def __init__(self, guest_list: list, song_list: list, max_guests=9, entry=5):
         self.guest_list = guest_list
         self.song_list = song_list
         self.max_guests = max_guests
+        self.entry = entry
 
     def check_number_of_guests(self):
         return len(self.guest_list)
@@ -28,4 +29,9 @@ class Room:
     def add_multiple_guests(self, *guests: list):
         for guest in guests: 
             self._add_guest(guest)
+
+    def check_guest_has_enough_money(self, guest):
+        if guest.wallet >= self.entry:
+            return True
+        return False
 
