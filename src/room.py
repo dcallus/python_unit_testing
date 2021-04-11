@@ -19,3 +19,6 @@ class Room:
         for guest in guests: 
             self.guest_list.append(guest)
         print(self.guest_list)
+
+    def check_number_of_guests(self):
+        return len(self.guest_list)
