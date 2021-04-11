@@ -15,19 +15,19 @@ class RoomTest(unittest.TestCase):
         self.song_3 = Song("Common People", "Pulp")
 
         # default guests for room_1
-        self.guest_1 = Guest("Bob", self.song_1)
-        self.guest_2 = Guest("Rob", self.song_2, wallet=5)
+        self.guest_1 = Guest("Bob", self.song_1, self.song_1)
+        self.guest_2 = Guest("Rob", self.song_2, self.song_2, wallet=5)
 
         # additional guests for room_1
-        self.guest_3 = Guest("Ben", self.song_2)
-        self.guest_4 = Guest("George", self.song_1, wallet=20)
-        self.guest_5 = Guest("Amy", self.song_2)
-        self.guest_6 = Guest("Hilda", self.song_3)
-        self.guest_7 = Guest("Ally", self.song_2)
-        self.guest_8 = Guest("Mike", self.song_3)
-        self.guest_9 = Guest("Janice", self.song_2)
-        self.guest_10 = Guest("Clive", self.song_1)
-        self.guest_11 = Guest("Skint Dave", self.song_1, wallet=1)
+        self.guest_3 = Guest("Ben", self.song_2, self.song_2)
+        self.guest_4 = Guest("George", self.song_1, self.song_1, wallet=20)
+        self.guest_5 = Guest("Amy", self.song_2, self.song_2)
+        self.guest_6 = Guest("Hilda", self.song_3, self.song_3)
+        self.guest_7 = Guest("Ally", self.song_2, self.song_1)
+        self.guest_8 = Guest("Mike", self.song_3, self.song_3)
+        self.guest_9 = Guest("Janice", self.song_2, self.song_2)
+        self.guest_10 = Guest("Clive", self.song_1, self.song_1)
+        self.guest_11 = Guest("Skint Dave", self.song_1, self.song_3, wallet=1)
 
 
         # default lists for room_1

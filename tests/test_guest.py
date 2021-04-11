@@ -10,8 +10,8 @@ class GuestTest(unittest.TestCase):
         self.song_1 = Song("Ring of Fire", "Johnny Cash")
         self.song_2 = Song("Song 2", "Blur")
         
-        self.guest_1 = Guest("June", self.song_1)
-        self.guest_2 = Guest("April", self.song_1, wallet=50)
+        self.guest_1 = Guest("June", self.song_1, self.song_1)
+        self.guest_2 = Guest("April", self.song_1, self.song_1, wallet=50)
 
     def test_guest_name(self):
         self.assertEqual("June", self.guest_1.name)
