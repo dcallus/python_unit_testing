@@ -4,7 +4,7 @@ class Room:
         self.song_list = song_list
         self.max_guests = max_guests
         self.entry = entry
-        self.total_entry_fees = 0
+        self.total_entry_fees = len(guest_list) * entry
 
     def check_number_of_guests(self):
         return len(self.guest_list)
