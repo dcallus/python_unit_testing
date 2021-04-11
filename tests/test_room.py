@@ -151,3 +151,16 @@ class RoomTest(unittest.TestCase):
     def test_guests_removed(self):
         self.room_1.remove_all_guests_from_list()
         self.assertEqual([], self.room_1.guest_list)
+
+    def test_get_total_cash(self):
+        self.room_1.check_in_guest(self.guest_3)
+        self.room_1.check_in_guest(self.guest_4)
+        self.room_1.check_in_guest(self.guest_5)
+        self.room_1.check_in_guest(self.guest_11) # not enough
+        self.room_1.guest_buys_drink(self.guest_1, self.drink_1)
+  
+        self.room_1.guest_buys_drink(self.guest_2, self.drink_1) # not enough
+        self.room_1.guest_buys_drink(self.guest_4, self.drink_1)
+        self.room_1.guest_buys_drink(self.guest_4, self.drink_1)
+        self.room_1.apply_drink_refund(self.guest_1, self.drink_1)
+        self.assertEqual(36, self.room_1.get_total_cash())

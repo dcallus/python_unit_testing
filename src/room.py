@@ -58,3 +58,6 @@ class Room:
     def remove_all_guests_from_list(self):
         # in case of emergency
         self.guest_list = []
+
+    def get_total_cash(self):
+        return self.total_entry_fees + self.bar_till
