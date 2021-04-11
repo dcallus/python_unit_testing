@@ -1,5 +1,5 @@
 class Room:
-    def __init__(self, guest_list, song_list, max_guests=50):
+    def __init__(self, guest_list: list, song_list: list, max_guests=50):
         self.guest_list = guest_list
         self.song_list = song_list
 
@@ -8,3 +8,6 @@ class Room:
 
     def remove_guest(self, guest):
         self.guest_list.remove(guest)
+
+    def add_song(self, song):
+        self.song_list.append(song)
