@@ -4,3 +4,6 @@ class Guest:
         self.song = song
         self.favourite_song = favourite_song
         self.wallet = wallet
+
+    def take_money_from_wallet(self, amount):
+        self.wallet -= amount

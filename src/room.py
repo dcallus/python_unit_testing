@@ -4,6 +4,7 @@ class Room:
         self.song_list = song_list
         self.max_guests = max_guests
         self.entry = entry
+        self.bar_till = 0
         self.total_entry_fees = len(guest_list) * entry
 
     def check_number_of_guests(self):
@@ -44,4 +45,6 @@ class Room:
     def add_to_total_entry_fees(self):
         self.total_entry_fees += self.entry
     
+    def guest_buys_drink(self, guest, drink):
+        pass
 

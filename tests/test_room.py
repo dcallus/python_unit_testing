@@ -2,6 +2,7 @@ import unittest
 from src.room import Room
 from src.guest import Guest
 from src.song import Song
+from src.drink import Drink
 
 class RoomTest(unittest.TestCase):
 
@@ -36,6 +37,9 @@ class RoomTest(unittest.TestCase):
         self.room_1_guests = [self.guest_1, self.guest_2]
         self.room_1 = Room(self.room_1_guests, self.song_list)
         self.room_2 = Room(self.room_1_guests, [self.song_3, self.song_4])
+
+        # make drinks
+        self.drink_1 = Drink("HopHouse13", 5.50, 5)
     
     def test_room_has_guest_list(self):
         self.assertEqual(self.room_1.guest_list, self.room_1_guests)
@@ -124,5 +128,9 @@ class RoomTest(unittest.TestCase):
         self.room_1.check_in_guest(self.guest_11)
         self.assertEqual(10, self.room_1.total_entry_fees)
     
+    def test_guest_buys_drink(self):
+        self.room_1.guest_buys_drink(self.guest_1, self.drink_1)
+        pass
+        # self.assertEqual()
 
     
