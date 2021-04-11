@@ -11,7 +11,7 @@ class Room:
         return len(self.guest_list)
 
     def _add_guest(self, guest):
-        if self.check_number_of_guests() < self.max_guests and self.guest_has_enough_money(guest): 
+        if self.check_number_of_guests() < self.max_guests and self.guest_has_enough_money(guest, self.entry): 
                 self.guest_list.append(guest)
                 guest.take_money_from_wallet(self.entry)
                 self.add_to_total_entry_fees()
@@ -34,8 +34,8 @@ class Room:
         for guest in guests: 
             self._add_guest(guest)
 
-    def guest_has_enough_money(self, guest):
-        if guest.wallet >= self.entry:
+    def guest_has_enough_money(self, guest, item):
+        if guest.wallet >= item:
             return True
         return False
 

@@ -96,13 +96,13 @@ class RoomTest(unittest.TestCase):
         self.assertEqual(5, self.room_1.entry)
 
     def test_customer_has_enough_money_enough(self):
-        self.assertEqual(True, self.room_1.guest_has_enough_money(self.guest_1))
+        self.assertEqual(True, self.room_1.guest_has_enough_money(self.guest_1, self.room_1.entry))
 
     def test_customer_has_enough_money_equal(self):
-        self.assertEqual(True, self.room_1.guest_has_enough_money(self.guest_2))
+        self.assertEqual(True, self.room_1.guest_has_enough_money(self.guest_2,self.room_1.entry))
 
     def test_customer_has_enough_money_not_enough(self):
-        self.assertEqual(False, self.room_1.guest_has_enough_money(self.guest_11))
+        self.assertEqual(False, self.room_1.guest_has_enough_money(self.guest_11, self.room_1.entry))
 
     def test_add_customer_to_guest_list_if_can_afford(self):
         self.room_1.check_in_guest(self.guest_11)
