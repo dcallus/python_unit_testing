@@ -55,18 +55,15 @@ class RoomTest(unittest.TestCase):
     def test_remove_song_from_song_list(self):
         self.room_1.remove_song(self.song_1)
         self.assertEqual(self.room_1.song_list, [self.song_2])
-
-    def add_multiple_guests(self):
-        self.room_1.add_multiple_guests(self.guest_3, self.guest_4, self.guest_5, self.guest_6,
-                                        self.guest_7, self.guest_8, self.guest_9, self.guest_10)
-
-    def test_add_multiple_guests(self):
-        self.add_multiple_guests()
-        self.assertEqual(self.room_1.guest_list, [self.guest_1, self.guest_2, self.guest_3, self.guest_4, self.guest_5, self.guest_6,
-                                        self.guest_7, self.guest_8, self.guest_9, self.guest_10])
-
+        
     def test_check_number_of_guests(self):
         self.room_1.add_multiple_guests(self.guest_3, self.guest_4)
         self.assertEqual(4, self.room_1.check_number_of_guests())
 
+
+    def test_add_multiple_guests(self):
+        self.room_1.add_multiple_guests(self.guest_3, self.guest_4, self.guest_5, self.guest_6,
+                                        self.guest_7, self.guest_8, self.guest_9, self.guest_10)
+        self.assertEqual(self.room_1.guest_list, [self.guest_1, self.guest_2, self.guest_3, self.guest_4, self.guest_5, self.guest_6,
+                                        self.guest_7, self.guest_8, self.guest_9])
         
