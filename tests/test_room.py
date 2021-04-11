@@ -69,7 +69,7 @@ class RoomTest(unittest.TestCase):
     def test_add_multiple_guests_too_many(self):
         self.room_1.add_multiple_guests(self.guest_3, self.guest_4, self.guest_5, self.guest_6,
                                         self.guest_7, self.guest_8, self.guest_9, self.guest_10)
-        self.assertEqual(self.room_1.gguest_list, [self.guest_1, self.guest_2, self.guest_3, self.guest_4, self.guest_5, self.guest_6,
+        self.assertEqual(self.room_1.guest_list, [self.guest_1, self.guest_2, self.guest_3, self.guest_4, self.guest_5, self.guest_6,
                                         self.guest_7, self.guest_8, self.guest_9])
 
     def test_add_single_guests_too_many(self):
