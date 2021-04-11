@@ -111,6 +111,10 @@ class RoomTest(unittest.TestCase):
     def test_room_has_guests_favourite_song_available(self):
         has_song = self.room_2.room_has_guests_favourite_song(self.guest_11)
         self.assertEqual("Skint Dave screams 'Whoo! yeah!!'", has_song)
+
+    def test_add_to_total_entry_fees(self):
+        self.room_1.check_in_guest(self.guest_5)
+        self.assertEqual(5, self.room_1.total_entry_fees)
     
 
     

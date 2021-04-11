@@ -4,6 +4,7 @@ class Room:
         self.song_list = song_list
         self.max_guests = max_guests
         self.entry = entry
+        self.total_entry_fees = 0
 
     def check_number_of_guests(self):
         return len(self.guest_list)
@@ -11,6 +12,7 @@ class Room:
     def _add_guest(self, guest):
         if self.check_number_of_guests() < self.max_guests and self.guest_has_enough_money(guest): 
                 self.guest_list.append(guest)
+                self.add_to_total_entry_fees()
         else:
             return
 
@@ -38,5 +40,8 @@ class Room:
     def room_has_guests_favourite_song(self, guest):
         if guest.favourite_song in self.song_list:
             return f"{guest.name} screams 'Whoo! yeah!!'"
+    
+    def add_to_total_entry_fees(self):
+        self.total_entry_fees += self.entry
     
 
