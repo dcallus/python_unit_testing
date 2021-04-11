@@ -106,11 +106,11 @@ class RoomTest(unittest.TestCase):
 
     def test_room_has_guests_favourite_song__not_available(self):
         has_song = self.room_1.room_has_guests_favourite_song(self.guest_11)
-        self.assertEqual(False, has_song)
+        self.assertEqual(None, has_song)
 
     def test_room_has_guests_favourite_song_available(self):
         has_song = self.room_2.room_has_guests_favourite_song(self.guest_11)
-        self.assertEqual(True, has_song)
+        self.assertEqual("Skint Dave screams 'Whoo! yeah!!'", has_song)
     
 
     
