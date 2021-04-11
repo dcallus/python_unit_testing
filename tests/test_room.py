@@ -19,14 +19,15 @@ class RoomTest(unittest.TestCase):
         self.guest_2 = Guest("Rob", self.song_2, wallet=5)
 
         # additional guests for room_1
-        self.guest_3 = Guest("Ben", self.song_2, wallet=4)
-        self.guest_4 = Guest("George", self.song_1)
+        self.guest_3 = Guest("Ben", self.song_2)
+        self.guest_4 = Guest("George", self.song_1, wallet=20)
         self.guest_5 = Guest("Amy", self.song_2)
         self.guest_6 = Guest("Hilda", self.song_3)
         self.guest_7 = Guest("Ally", self.song_2)
         self.guest_8 = Guest("Mike", self.song_3)
         self.guest_9 = Guest("Janice", self.song_2)
         self.guest_10 = Guest("Clive", self.song_1)
+        self.guest_11 = Guest("Skint Dave", self.song_1, wallet=1)
 
 
         # default lists for room_1
@@ -89,12 +90,18 @@ class RoomTest(unittest.TestCase):
         self.assertEqual(5, self.room_1.entry)
 
     def test_customer_has_enough_money_enough(self):
-        self.assertEqual(True, self.room_1.check_guest_has_enough_money(self.guest_1))
+        self.assertEqual(True, self.room_1.guest_has_enough_money(self.guest_1))
 
     def test_customer_has_enough_money_equal(self):
-        self.assertEqual(True, self.room_1.check_guest_has_enough_money(self.guest_2))
+        self.assertEqual(True, self.room_1.guest_has_enough_money(self.guest_2))
 
     def test_customer_has_enough_money_not_enough(self):
-        self.assertEqual(False, self.room_1.check_guest_has_enough_money(self.guest_3))
+        self.assertEqual(False, self.room_1.guest_has_enough_money(self.guest_11))
+
+    def test_add_customer_to_guest_list_if_can_afford(self):
+        self.room_1.check_in_guest(self.guest_11)
+        self.assertEqual(self.room_1.guest_list, [self.guest_1, self.guest_2])
+
+    
 
     

@@ -9,7 +9,7 @@ class Room:
         return len(self.guest_list)
 
     def _add_guest(self, guest):
-        if self.check_number_of_guests() < self.max_guests:
+        if self.check_number_of_guests() < self.max_guests and self.guest_has_enough_money(guest): 
                 self.guest_list.append(guest)
         else:
             return
@@ -30,7 +30,7 @@ class Room:
         for guest in guests: 
             self._add_guest(guest)
 
-    def check_guest_has_enough_money(self, guest):
+    def guest_has_enough_money(self, guest):
         if guest.wallet >= self.entry:
             return True
         return False
