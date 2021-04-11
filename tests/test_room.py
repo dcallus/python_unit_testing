@@ -119,6 +119,10 @@ class RoomTest(unittest.TestCase):
     def test_add_to_total_entry_fees_if_too_many_guests(self):
         self.test_add_multiple_guests_too_many()
         self.assertEqual(45, self.room_1.total_entry_fees)
+
+    def test_add_to_total_entry_fees_if_customer_cannot_afford(self):
+        self.room_1.check_in_guest(self.guest_11)
+        self.assertEqual(10, self.room_1.total_entry_fees)
     
 
     
