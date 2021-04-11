@@ -127,10 +127,13 @@ class RoomTest(unittest.TestCase):
     def test_add_to_total_entry_fees_if_customer_cannot_afford(self):
         self.room_1.check_in_guest(self.guest_11)
         self.assertEqual(10, self.room_1.total_entry_fees)
+
+    def test_take_money_from_customer_after_entry(self):
+        self.room_1.check_in_guest(self.guest_4)
+        self.assertEqual(15, self.guest_4.wallet)
     
     def test_guest_buys_drink(self):
         self.room_1.guest_buys_drink(self.guest_1, self.drink_1)
-        pass
         # self.assertEqual()
 
     

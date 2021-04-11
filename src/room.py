@@ -13,6 +13,7 @@ class Room:
     def _add_guest(self, guest):
         if self.check_number_of_guests() < self.max_guests and self.guest_has_enough_money(guest): 
                 self.guest_list.append(guest)
+                guest.take_money_from_wallet(self.entry)
                 self.add_to_total_entry_fees()
         else:
             return
