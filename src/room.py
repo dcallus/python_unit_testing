@@ -51,3 +51,4 @@ class Room:
             guest.take_money_from_wallet(drink.price)
             self.bar_till += drink.price
 
+    

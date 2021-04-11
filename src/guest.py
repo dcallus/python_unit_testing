@@ -7,3 +7,6 @@ class Guest:
 
     def take_money_from_wallet(self, amount):
         self.wallet -= amount
+
+    def put_money_in_wallet(self, amount):
+        self.wallet += amount

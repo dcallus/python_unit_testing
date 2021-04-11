@@ -30,3 +30,7 @@ class GuestTest(unittest.TestCase):
     def test_take_money_from_wallet(self):
         self.guest_1.take_money_from_wallet(5)
         self.assertEqual(5, self.guest_1.wallet)
+
+    def test_put_money_in_wallet(self):
+        self.guest_1.put_money_in_wallet(50)
+        self.assertEqual(60, self.guest_1.wallet)
