@@ -51,4 +51,6 @@ class Room:
             guest.take_money_from_wallet(drink.price)
             self.bar_till += drink.price
 
-    
+    def apply_drink_refund(self, guest, drink):
+        guest.put_money_in_wallet(drink.price)
+        self.bar_till -= drink.price
