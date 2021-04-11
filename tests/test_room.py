@@ -132,8 +132,9 @@ class RoomTest(unittest.TestCase):
         self.room_1.check_in_guest(self.guest_4)
         self.assertEqual(15, self.guest_4.wallet)
     
-    def test_guest_buys_drink(self):
+    def test_guest_buys_drink_has_enough_money(self):
         self.room_1.guest_buys_drink(self.guest_1, self.drink_1)
-        # self.assertEqual()
+        self.assertEqual(4.5, self.guest_1.wallet)
+        self.assertEqual(5.5, self.room_1.bar_till)
 
     

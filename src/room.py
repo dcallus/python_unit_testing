@@ -47,5 +47,7 @@ class Room:
         self.total_entry_fees += self.entry
     
     def guest_buys_drink(self, guest, drink):
-        pass
+        if self.guest_has_enough_money(guest, drink.price):
+            guest.take_money_from_wallet(drink.price)
+            self.bar_till += drink.price
 
