@@ -168,6 +168,18 @@ class RoomTest(unittest.TestCase):
         self.assertEqual(36, self.room_1.get_total_cash())
 
     def test_add_to_tab__total_current_round(self):
+        # guest has enough money, add to dictionary
         self.room_1.add_to_tab(self.guest_12, [self.drink_1, self.drink_2])
         self.assertEqual({self.guest_12:  [self.drink_1, self.drink_2]}, self.room_1.bar_tabs)
         
+        # guest doesn't have enough money, do not add to dictionary
+        self.room_1.add_to_tab(self.guest_11, [self.drink_1])
+        self.assertEqual({self.guest_12:  [self.drink_1, self.drink_2]}, self.room_1.bar_tabs)
+
+        # another guest has enough money, add to dictionary
+        self.room_1.add_to_tab(self.guest_4, [self.drink_1, self.drink_1, self.drink_2])
+        self.assertEqual({self.guest_12:  [self.drink_1, self.drink_2],
+                          self.guest_4:  [self.drink_1, self.drink_1, self.drink_2]
+                        }, self.room_1.bar_tabs)
+
+    
