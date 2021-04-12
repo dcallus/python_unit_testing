@@ -182,4 +182,16 @@ class RoomTest(unittest.TestCase):
                           self.guest_4:  [self.drink_1, self.drink_1, self.drink_2]
                         }, self.room_1.bar_tabs)
 
-    
+        # guest with tab adds more drinks
+        self.room_1.add_to_tab(self.guest_12, [self.drink_1, self.drink_1, self.drink_2])
+        self.assertEqual({self.guest_12:  [self.drink_1, self.drink_2, self.drink_1, self.drink_1, self.drink_2],
+                          self.guest_4:  [self.drink_1, self.drink_1, self.drink_2]}, self.room_1.bar_tabs)
+
+    def test_money_transferred_from_wallet_to_tab(self):
+        self.room_1.add_to_tab(self.guest_12, [self.drink_2, self.drink_2])
+        self.assertEqual(12, self.guest_12.tab)
+
+    def test_pay_customer_tab(self):
+        self.test_money_transferred_from_wallet_to_tab()
+        self.room_1.pay_customer_tab(self.guest_12)
+        self.assertEqual(12, self.room_1.bar_till)

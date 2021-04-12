@@ -71,3 +71,14 @@ class Room:
         if self.guest_has_enough_money(guest, current_round):
             if guest not in self.bar_tabs.keys():
                 self.bar_tabs.update({guest: drinks})
+            else:
+                self.bar_tabs[guest].extend(drinks)
+
+            # reserves money, so guest doesn't over spend
+            guest.take_money_from_wallet(current_round)
+            guest.put_money_in_tab(current_round)
+    
+    def pay_customer_tab(self, guest):
+        # pay full tab
+        self.bar_till += guest.tab
+        guest.take_money_from_tab(guest.tab)
