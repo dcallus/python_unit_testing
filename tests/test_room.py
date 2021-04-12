@@ -30,6 +30,7 @@ class RoomTest(unittest.TestCase):
         self.guest_9 = Guest("Janice", self.song_2, self.song_2)
         self.guest_10 = Guest("Clive", self.song_1, self.song_1)
         self.guest_11 = Guest("Skint Dave", self.song_1, self.song_4, wallet=1)
+        self.guest_12 = Guest("Rich Dave", self.song_2, self.song_3, wallet=50)
 
 
         # default lists for room_1
@@ -40,6 +41,7 @@ class RoomTest(unittest.TestCase):
 
         # make drinks
         self.drink_1 = Drink("HopHouse13", 5.50, 5)
+        self.drink_2 = Drink("Old Fashioned", 6, 30)
     
     def test_room_has_guest_list(self):
         self.assertEqual(self.room_1.guest_list, self.room_1_guests)
@@ -164,3 +166,8 @@ class RoomTest(unittest.TestCase):
         self.room_1.guest_buys_drink(self.guest_4, self.drink_1)
         self.room_1.apply_drink_refund(self.guest_1, self.drink_1)
         self.assertEqual(36, self.room_1.get_total_cash())
+
+    def test_add_to_tab__total_current_round(self):
+        self.room_1.add_to_tab(self.guest_12, [self.drink_1, self.drink_2])
+        self.assertEqual({self.guest_12:  [self.drink_1, self.drink_2]}, self.room_1.bar_tabs)
+        

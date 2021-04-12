@@ -6,6 +6,7 @@ class Room:
         self.entry = entry
         self.bar_till = 0
         self.total_entry_fees = len(guest_list) * entry
+        self.bar_tabs = {}
 
     def check_number_of_guests(self):
         return len(self.guest_list)
@@ -61,3 +62,12 @@ class Room:
 
     def get_total_cash(self):
         return self.total_entry_fees + self.bar_till
+
+    def add_to_tab(self, guest, drinks: list):
+        current_round = 0
+        for drink in drinks:
+            current_round += drink.price
+        
+        if self.guest_has_enough_money(guest, current_round):
+            if guest not in self.bar_tabs.keys():
+                self.bar_tabs.update({guest: drinks})
